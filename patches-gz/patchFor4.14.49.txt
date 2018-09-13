@@ -1,0 +1,10 @@
+Patching::/home/voltha/Prepare-Kernel/patches/4.14.49/0001-drivers-i2c-muxes-pca954x-deselect-on-exit.patch
+patching file drivers/i2c/muxes/Kconfig
+patching file drivers/i2c/muxes/i2c-mux-pca954x.c
+Patching::/home/voltha/Prepare-Kernel/patches/4.14.49/0002-driver-support-intel-igb-bcm5461S-phy.patch
+patching file drivers/net/ethernet/intel/igb/e1000_82575.c
+patching file drivers/net/ethernet/intel/igb/e1000_defines.h
+patching file drivers/net/ethernet/intel/igb/e1000_hw.h
+patching file drivers/net/ethernet/intel/igb/e1000_phy.c
+patching file drivers/net/ethernet/intel/igb/e1000_phy.h
+patching file drivers/net/ethernet/intel/igb/igb_main.c
