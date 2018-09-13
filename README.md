@@ -36,7 +36,7 @@ https://www.kernel.org/pub/linux/kernel/v4.x/
 	diff -Naur  a/ b/ >  ../0003-drivers-net-ethernet-broadcom-tg3-linux-4.16.18.patch 
 	diff -Naur  a/ b/ >  drivers-net-ethernet-broadcom-tg3-3.137k-version.patch                                         
 
-5.1 Generate <file_name>.patch with git diff
+5.2 Generate <file_name>.patch with git diff
 
    a. tar xvf linux-4.14.49.tar.xz
    b. cd linux-4.14.49
@@ -49,6 +49,10 @@ https://www.kernel.org/pub/linux/kernel/v4.x/
       git diff > ../003-jcyu.patch
       git diff > ../0003-drivers-net-ethernet-broadcom-linux-4.16.18.patch
 
+5.3 The mode of the patch file should be "664" for onl, for example
+    chmod 664 *
+	
+	  
 6. How to patch from patch-file
  a. method-1
   $ cat 0001-drivers-i2c-muxes-pca954x-deselect-on-exit.patch | patch  –p0
