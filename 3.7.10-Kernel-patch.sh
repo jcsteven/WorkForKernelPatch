@@ -1,6 +1,6 @@
 #!/bin/bash
 # -------------------------------------------------------
-# Automatic preparation script for rtk_openwrt 
+# Automatic preparation script for rtk_openwrt
 # JC Yu,     Novenber 26,2015
 # -------------------------------------------------------
 # IMPORTANT:
@@ -13,7 +13,7 @@ WORK_NAME=KERNEL
 VER=3.7.10
 PNAME="patches"
 ## if PNAME is "origin", you don't need to prepare folder
-## if PNAME is not "origin", you need to prepare PNAME-VER.tar.gz 
+## if PNAME is not "origin", you need to prepare PNAME-VER.tar.gz
 
 KERNEL_NAME=linux-${VER}
 KERNEL_FILE=${KERNEL_NAME}.tar.xz
@@ -29,7 +29,7 @@ KERNEL_DIR="./${WORK_NAME}/${KERNEL_NAME_PATCH}"
 PATCH_NAME=${PNAME}-${VER}
 PATCH_GZ_FILE="./patches-gz/${PATCH_NAME}.tar.gz"
 PATCH_DIR="${PPWW}/${WORK_NAME}/${PATCH_NAME}"
-PATCH_LIST="${PATCH_DIR}/series"  
+PATCH_LIST="${PATCH_DIR}/series"
 
 echo "PPWW=${PPWW}"
 echo "PWD=${PWD}"
@@ -45,41 +45,41 @@ echo "PATCH_LIST=${PATCH_LIST}"
 
 
 TO_PREPARE_WORK="y"
-if [[ "${TO_PREPARE_WORK}" == "y" ]]; then	
+if [[ "${TO_PREPARE_WORK}" == "y" ]]; then
 	# Create Working DIR
 	[ -d $WORK_NAME ] || mkdir $WORK_NAME
 
 	if [ ! -f "./${WORK_NAME}/${KERNEL_FILE}" ]; then
 	   echo $LINENO "Missing ./${WORK_NAME}/${KERNEL_FILE}"
-	   echo $LINENO "Downloading ${KERNEL_FILE} form Interne"	   
+	   echo $LINENO "Downloading ${KERNEL_FILE} form Internet"
 	   wget  https://www.kernel.org/pub/linux/kernel/v3.x/${KERNEL_FILE} -P ./${WORK_NAME}/
     else
 	   echo $LINENO "Downloaded ${KERNEL_FILE} form Interne"
-	fi		
+	fi
 
 fi
 
 TO_MAKE_DIR="y"
-if [[ "${TO_MAKE_DIR}" == "y" ]]; then	
+if [[ "${TO_MAKE_DIR}" == "y" ]]; then
     echo $LINENO "Generating  ${KERNEL_DIR}"
 	if [ ! -f "./${WORK_NAME}/${KERNEL_FILE}" ]; then
 	   echo $LINENO "Missing ./${WORK_NAME}/${KERNEL_FILE}"
 	   exit -1
 	fi
-	
+
 	rm -rf ${KERNEL_DIR}
 	[ -d $KERNEL_DIR ] || mkdir $KERNEL_DIR
-	
+
 	tar xvf ./${WORK_NAME}/${KERNEL_FILE} -C ${KERNEL_DIR}  --strip-components=1
 fi
 
-if [[ "${PNAME}" == "origin" ]]; then		
+if [[ "${PNAME}" == "origin" ]]; then
 	TO_DO_PATCH="n"
 else
 	TO_DO_PATCH="y"
 fi
 
-if [[ "${TO_DO_PATCH}" == "y" ]]; then	
+if [[ "${TO_DO_PATCH}" == "y" ]]; then
     echo $LINENO "About to patch:  ${KERNEL_DIR}"
 
 	if [ ! -f "${PATCH_GZ_FILE}" ]; then
@@ -90,7 +90,7 @@ if [[ "${TO_DO_PATCH}" == "y" ]]; then
 	rm -rf ${PATCH_DIR}
 	[ -d $PATCH_DIR ] || mkdir $PATCH_DIR
 	    echo $LINENO "Tar the folder"
-		tar zxvf ${PATCH_GZ_FILE} -C ${PATCH_DIR}  --strip-components=1		
+		tar zxvf ${PATCH_GZ_FILE} -C ${PATCH_DIR}  --strip-components=1
 	fi
 
 	if [ ! -f "${PATCH_LIST}" ]; then
